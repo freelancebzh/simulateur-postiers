@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulateur Aides & Épargne - Postiers</title>
+    <title>Simulateur Aides & Épargne</title>
     <meta name="robots" content="noindex, nofollow">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>.page { display: none; } .page.active { display: block; }</style>
@@ -13,8 +13,15 @@
     <header class="bg-blue-900 text-white py-4 px-6 shadow-md"><h1 class="text-xl font-bold">💼 SimuAides & Épargne Postier</h1></header>
 
     <main class="max-w-3xl mx-auto p-4 space-y-6">
-        <!-- ÉTAPE 2 : Saisie Épargne -->
-        <section id="page2" class="page active bg-white p-6 rounded-2xl shadow-sm border">
+        <!-- PAGE 1 : Introduction -->
+        <section id="page1" class="page active bg-white p-6 rounded-2xl shadow-sm border">
+            <h2 class="text-xl font-bold mb-4">Bienvenue</h2>
+            <p class="mb-6">Ce simulateur vous aide à calculer vos avantages liés à l'épargne entreprise.</p>
+            <button onclick="allerAPage(2)" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Commencer</button>
+        </section>
+
+        <!-- PAGE 2 : Épargne -->
+        <section id="page2" class="page bg-white p-6 rounded-2xl shadow-sm border">
             <h2 class="text-lg font-bold mb-4">💰 Votre effort d'épargne (PEG)</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -29,7 +36,7 @@
             <button onclick="allerAPage(3)" class="mt-6 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Continuer</button>
         </section>
 
-        <!-- ÉTAPE 3 : Choix -->
+        <!-- PAGE 3 : Résultats -->
         <section id="page3" class="page bg-white p-6 rounded-2xl shadow-sm border">
             <h2 class="text-lg font-bold mb-4">🏦 Services Financiers</h2>
             <label class="flex items-center space-x-3 p-3 bg-gray-50 rounded border cursor-pointer">
@@ -42,7 +49,6 @@
                 <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900">
                     <p class="font-bold mb-1">💡 Flexibilité Totale :</p>
                     <p>Vous vous mariez/pacsez, agrandissez votre maison ou avez un besoin urgent ? Vous pouvez placer le maximum pour toucher l'abondement et retirer l'ensemble (versement + abondement) <strong>immédiatement après</strong>. Il n'y a aucun délai minimum.</p>
-                    <a href="#" onclick="alert('Cas de déblocage : Résidence principale, Mariage/PACS, Divorce, Naissance 3ème enfant, Décès, Création entreprise, Surendettement, etc.')" class="text-blue-700 underline font-bold">Voir tous les cas de déblocage</a>
                 </div>
             </div>
         </section>
@@ -55,12 +61,10 @@
             if(type === 'mensuel') a.value = m.value * 12;
             else m.value = (a.value / 12).toFixed(2);
         }
-
         function allerAPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page' + n).classList.add('active');
         }
-
         function calculerAbondement(montantAnnuel) {
             let a = 0;
             if (montantAnnuel <= 400) a = montantAnnuel * 0.35;
@@ -68,18 +72,16 @@
             else a = (400 * 0.35) + (400 * 0.25) + ((Math.min(montantAnnuel, 9200) - 800) * 0.15);
             return Math.min(a, 1500);
         }
-
         function calculerTout() {
             let v = parseFloat(document.getElementById('epargneAnnuelle').value) || 0;
             let gainSaisi = calculerAbondement(v);
             let gain150 = calculerAbondement(150 * 12);
-            let gainMax = calculerAbondement(9200); // Pour atteindre 1500€ d'abondement
-
+            let gainMax = calculerAbondement(9200);
             document.getElementById('resPEG').innerHTML = `
                 <div class="space-y-3">
                     <p><strong>Votre choix (${v}€/an) :</strong> Abondement reçu = <strong>${gainSaisi.toFixed(2)}€</strong></p>
                     <div class="border-t pt-2 space-y-1 text-gray-600">
-                        <p><em>Exemple avec 150€/mois (1800€/an) :</em> Abondement = <strong>${gain150.toFixed(2)}€</strong></p>
+                        <p><em>Exemple avec 150€/mois :</em> Abondement = <strong>${gain150.toFixed(2)}€</strong></p>
                         <p><em>Exemple pour le max (1500€ d'abondement) :</em> Versement requis = <strong>9200€/an</strong></p>
                     </div>
                 </div>`;
