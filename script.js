@@ -53,7 +53,8 @@ function calculer() {
 
     let texteEnfant = nbEnfants > 0 
         ? `• Vos <strong>${nbEnfants}</strong> enfants partent ${nbJours} jours au camping avec un proche ? Vous touchez <strong>${(nbEnfants * nbJours * aideJour).toFixed(2)}€</strong>.`
-        : `• Un enfant mineur d'un postier de votre tranche apporte <strong>${aideJour.toFixed(2)}€/j</strong> facturé.`;
+        : `• Le parent d'un enfant mineur dans votre tranche est aidé à hauteur de <strong>${aideJour.toFixed(2)}€/j</strong> facturé.`;
+		
 
     document.getElementById('total-parts').innerHTML = `
         <div style="background: #e7f3ff; padding: 15px; border-radius: 10px; border-left: 5px solid #007bff; margin-bottom: 20px;">
