@@ -47,7 +47,7 @@ function calculer() {
                 </ul>
                 <div style="background: #fbc02d; padding: 15px; border-radius: 5px; text-align: center; font-weight: bold; font-size: 1.2em; margin-top: 15px;">
                     VOS VACANCES NE VOUS COUTENT PLUS QUE ${coutFinal.toFixed(2)}€ ! <br>
-					(et si c'est 0€ c'est que vous gagnez de l'argent)
+				
                 </div>
             </div>`;
     }
