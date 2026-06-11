@@ -60,73 +60,79 @@ function calculer() {
     document.getElementById('total-parts').innerHTML = `
         <div style="background: #e7f3ff; padding: 15px; border-radius: 10px; border-left: 5px solid #007bff; margin-bottom: 20px;">
             <h4 style="margin-top: 0; color: #007bff; margin-bottom: 10px;">🏖️ VACANCES ET SEJOURS</h4>
-            <div style="font-weight: bold; margin-bottom: 5px;">Chèques vacances</div>
+            <div style="font-weight: bold; margin-bottom: 5px;">💸 Chèques vacances</div>
             <p>
-                => Pour vous abondement de <strong>${(taux * 100).toFixed(0)}%</strong><br>
-				➔ Vous épargnez 100€ : Vous disposez de <strong>${(100 * (1 + taux)).toFixed(0)}€</strong>.<br>
-                • Budget 30€ (Restaurant) : Vous ne payez que <strong>${(30 * (1 - (taux / (1 + taux)))).toFixed(2)}€</strong>.<br>
+                => Pour vous un abondement de <strong>${(taux * 100).toFixed(0)}%</strong><br>
+				➔ Vous épargnez 100€ = Vous disposez de <strong>${(100 * (1 + taux)).toFixed(0)}€ </strong><br>
+				(merci La Poste).<br>
+                • Budget 30€ (Restaurant) : Vous ne payez plus <strong>QUE</strong> ${(30 * (1 - (taux / (1 + taux)))).toFixed(2)}€.<br>
                 ${montantSaisi > 0 ? `• Budget Location indiqué (${montantSaisi}€) :<br>- Base abondée (jusqu'à 1200€) : Vous économisez <strong>${economie.toFixed(2)}€ sur le séjour initialement à (${montantSaisi}€)</strong>.<br>
 				(NB : au-delà de 1200€ : pas d' abondement)<br>
 				➔ <strong>Coût net après abondement : ${coutApresReduction.toFixed(2)}€</strong>.` : `• Budget Location : <em>Indiquez un montant pour voir votre réduction.</em>`}<br>
                 Réduction réelle : - <strong>${((taux / (1 + taux)) * 100).toFixed(2)}%</strong> 
-                <br> et cela est valable sur <strong>TOUS</strong> vos achats loisirs (ciné, parcs...), vacances (avions, campings...), la restauration (Mcdo, Buffalo,...) <strong>MAIS EGALEMENT LE PEAGE</strong> (offre télépéage avec chargement par chèques vacances)
+                <br> et cela est valable sur <strong>TOUS</strong> vos achats loisirs (ciné, parcs...), vacances (avions, campings...), la restauration (Mcdo, Buffalo,...) mais <strong>EGALEMENT LE PEAGE</strong> <BR>
+				(offre télépéage avec chargement par chèques vacances)
             </p>
             <hr style="border: 0; border-top: 1px solid #cce5ff; margin: 15px 0;">
-            <div style="font-weight: bold; margin-bottom: 5px;">Aide aux vacances (Vacances Timbrés)</div>
+            <div style="font-weight: bold; margin-bottom: 5px;">💸 Aide aux vacances (Vacances Timbrés)</div>
             <p>• Aide versée : <strong>${aideVacances}€</strong> <br>(c'est un virement effectué 1fois/an/postier après présentation de la facture).</p>
             <hr style="border: 0; border-top: 1px solid #cce5ff; margin: 15px 0;">
-            <div style="font-weight: bold; margin-bottom: 5px;">Séjour enfant accompagné</div>
+            <div style="font-weight: bold; margin-bottom: 5px;">💸 Séjour enfant accompagné</div>
             <p><em>(Limite de 45 nuits par an et par enfant)</em><br>${texteEnfant}</p>
             ${exempleCanon}
         </div>
         
         <div style="background: #f4e7ff; padding: 15px; border-radius: 10px; border-left: 5px solid #9c27b0; margin-bottom: 20px;">
-            <h4 style="margin-top: 0; color: #9c27b0; margin-bottom: 10px;">🎒 Séjours éducatifs (aides par postier salarié)</h4>
-            <p>• Recevez <strong>${aideSejour.toFixed(2)}€</strong> par nuitée de classe découverte et par enfant.<br>• Recevez <strong>${aideLinguistique.toFixed(2)}€</strong> par nuitée de séjour linguistique et par enfant.</p>
+            <h4 style="margin-top: 0; color: #9c27b0; margin-bottom: 10px;">🎒 Séjours éducatifs (aides par postier salarié)</h4><br>
+            <p>• <strong>${aideSejour.toFixed(2)}€</strong> par nuitée de classe découverte et par enfant.<br>
+			•  <strong>${aideLinguistique.toFixed(2)}€</strong> par nuitée de séjour linguistique et par enfant.</p>
         </div>
 
         <div style="background: #e8f5e9; padding: 15px; border-radius: 10px; border-left: 5px solid #4caf50; margin-bottom: 20px;">
-            <h4 style="margin-top: 0; color: #4caf50; margin-bottom: 10px;">🏠 Vie quotidienne (50 chèques/an/postier)</h4>
-            <p>• Aide : <strong>${aideCesu.toFixed(2)}€ par chèque (virtuel ou papier)</strong> (soit <strong>${(aideCesu * 50).toFixed(2)}€</strong> aide/an).<br>
+            <h4 style="margin-top: 0; color: #4caf50; margin-bottom: 10px;">🏠 Vie quotidienne (50 chèques/an/postier)</h4><br>
+            <p>• Aide : <strong>${aideCesu.toFixed(2)}€ par chèque</strong> (virtuel ou papier) <br>
+			(soit <strong>${(aideCesu * 50).toFixed(2)}€</strong> aide/an).<br><br>
             • <strong>Exemple concret :</strong> 1h de ménage à 30€ :<br>
 			- Votre aide est de <strong>${(aideCesu * 2).toFixed(2)}€</strong>.<br>
-- Vous payez <strong>${(30 - (aideCesu * 2)).toFixed(2)}€</strong> net.<br>
+- Vous payez <strong>${(30 - (aideCesu * 2)).toFixed(2)}€</strong> net.<br><br>
 ➔ Après crédit d'impôt (50%), votre coût réel tombe à <strong>${((30 - (aideCesu * 2)) * 0.5).toFixed(2)}€/heure</strong> pour une maison et/ou un jardin propres.</p>
             <div style="font-size: 0.9em; color: #333; margin-top: 10px; border-top: 1px solid #c8e6c9; padding-top: 5px;"><strong>⚠️ Rappel :</strong> Via les offres partenaires La Poste vous bénéficiez de frais de dossier offerts et n'avez aucune démarche URSSAF.</div>
             <div style="background: #fff3e0; padding: 15px; border-radius: 10px; border-left: 5px solid #ff9800; margin-top: 15px;">
-                <h4 style="margin-top: 0; color: #ff9800; margin-bottom: 10px;">👶 Parentalité (Aides complémentaires)</h4>
+                <h4 style="margin-top: 0; color: #ff9800; margin-bottom: 10px;">👶 Parentalité (Aides complémentaires)</h4><br>
                 <p>• 0 à 4 ans : <strong>84 chèques</strong> /an / enfant <br>
-				• 4 à 11 ans : <strong>55 chèques</strong> /an / enfant.<br>
+				• 4 à 11 ans : <strong>55 chèques</strong> /an / enfant.<br><br>
                 ➔ <strong>baby-sitting / centre de loisir le mercredi :</strong> Vous réglez 150€/mois :<br>
 - Votre prise en charge est de <strong>${(aideCesu * 10).toFixed(2)}€</strong>.<br>
 - Vous ne payez que <strong>${(150 - (aideCesu * 10)).toFixed(2)}€</strong> net.<br>
-- si l'enfant a moins de 6 ans, vous bénéficiez du crédit d'impôt (50%), votre coût réel mensuel tombe à <strong>${((150 - (aideCesu * 10)) * 0.5).toFixed(2)}€</strong>.<br>
-                ➔ Ces chèques sont cumulables avec votre dotation annuelle de vie quotidienne (et dans les fais vous pouvez utiliser ces chèques parent' pour payer le ménage).<br>
+- si l'enfant a moins de 6 ans, vous bénéficiez du crédit d'impôt (50%), votre coût réel mensuel tombe à <strong>${((150 - (aideCesu * 10)) * 0.5).toFixed(2)}€</strong>.<br><br>
+                ➔ Ces chèques sont cumulables avec votre dotation annuelle de vie quotidienne (et dans les fais vous pouvez utiliser ces chèques parent' pour payer le ménage).<br><br>
 				➔ Notez que pour les vacances scolaires il y un autre type d'aides pour les stages de sports et le centre aéré</p>
             </div>
         </div>
         
         <div style="background: #fdf2e9; padding: 15px; border-radius: 10px; border-left: 5px solid #e67e22; margin-bottom: 20px;">
-            <h4 style="margin-top: 0; color: #e67e22; margin-bottom: 10px;">💰 Épargne & Avantages Bancaires</h4>
-            <p>• <strong>Plan d'Épargne Groupe :</strong> Optimisez votre épargne avec les avantages La Poste jusqu'à 1500€/an avec plus de 10 opportunités de déblocage avant les 5 ans.<br>
-			• <strong>Prêts à la consommation :</strong> Taux préférentiels réservés aux postiers, accessibles même si vous n'êtes pas client de la Banque Postale.<br>
-			• <strong>Services La Banque Postale :</strong> Disposez d'une formule de compte sécurisée à moins de 17€ par trimestre, du remboursement de la carte bancaire et de frais réduits le tout pour au final ne pas payer plus de 2€/mois.</p>
+            <h4 style="margin-top: 0; color: #e67e22; margin-bottom: 10px;">💰 Épargne & Avantages Bancaires</h4><br>
+            <p>• <strong>Plan d'Épargne Groupe :</strong> Optimisez votre épargne avec les avantages La Poste jusqu'à 1500€/an avec plus de 10 opportunités de déblocage avant les 5 ans.<br><br>
+			• <strong>Prêts à la consommation :</strong> Taux préférentiels réservés aux postiers, accessibles même si vous n'êtes pas client de la Banque Postale.<br><br>
+			• <strong>Services La Banque Postale :</strong> Disposez d'une formule de compte sécurisée à moins de 17€ par trimestre, du remboursement de la carte bancaire et de frais réduits le tout pour au final ne pas payer plus de <strong>2€/mois</strong>.</p>
         </div>
         
         <div style="background: #f5f5f5; padding: 15px; border-radius: 10px; border-left: 5px solid #9e9e9e; margin-bottom: 20px;">
-            <h4 style="margin-top: 0; color: #616161; margin-bottom: 10px;">ℹ️ AUTRES AIDES DISPONIBLES</h4>
+            <h4 style="margin-top: 0; color: #616161; margin-bottom: 10px;">ℹ️ AUTRES AIDES DISPONIBLES 🎉</h4><br>
             <p style="font-size: 0.95em;">
-			• aide séjours enfants accompagnés pour vos enfants de 18 à 20 ans de ${aideJour.toFixed(2)}€ <strong>s'ils voyagent avec vous</strong>.<br>
-			• Centres de loisirs / stages pendant les vacances scolaires : Financement de 1,50€ à 7€ par jour.(selon votre tranche)<br>
-			• Logement : Partenariats logements étudiants Paris ET Province.<br>
-			• Primes de rentrée du CP aux études supérieures pour les tranches 1 & 2.<br>
-			• Handicap : Aides spécifiques pour enfants de moins de 20 ans.<br>
-			• Aidants : 1 830€ via chèques emploi service universel préfinancés + aide au répit.<br>
-			• Aide à domicile et personnes fragilisées : 6€ à 23€ par heure, jusqu'à 15 heures par mois.<br>
-			• Participation frais de garde (si vous ne prenez pas les CESUs parentalité : Aide de 275€ à 1092€ par an (selon votre tranche).<br>
-			• Aide aux colonies : Montant maximum pouvant atteindre 1 300€.<br>
-			• Activités sportives et culturelles : aides annuelles de 30€ pour le/la conjointe, 60€ pour les enfants jusqu'à 25 ans et 80€ pour vous.<br>
-			• Prof Express : Soutien et cours en ligne GRATUIT du CP à la terminale pour vos enfants.</p>
+			• 🏖️ aide séjours enfants accompagnés pour vos enfants de 18 à 20 ans de ${aideJour.toFixed(2)}€ <strong>s'ils voyagent avec vous</strong>.<br><br>
+			• ⚽ Centres de loisirs / stages pendant les vacances scolaires : Financement de 1,50€ à 7€ par jour.(selon votre tranche)<br><br>
+			• 🏢 Logement : Partenariats logements étudiants <br>
+			Paris ET Province.<br><br>
+			• 📖 Primes de rentrée du CP aux études supérieures <br>
+			(pour les tranches 1 & 2)<br><br>
+			• 🩼 Handicap : Aides spécifiques pour enfants de moins de 20 ans.<br><br>
+			• 🐕‍🦺 Aidants : 1.830€ via chèques emploi service universel préfinancés + aide au répit.<br><br>
+			• 🧹 Aide à domicile et personnes fragilisées : 6€ à 23€ par heure, jusqu'à 15 heures par mois.<br><br>
+			• 🐻 Participation frais de garde (si vous ne prenez pas les CESUs parentalité : Aide de 275€ à 1.092€ par an (selon votre tranche).<br><br>
+			• 🧳 Aide aux colonies : Montant maximum pouvant atteindre 1.300€.<br><br>
+			• 🏓 Activités sportives et culturelles : aides annuelles de 30€ pour le/la conjointe, 60€ pour les enfants jusqu'à 25 ans et 80€ pour vous.<br><br>
+			• 👨🏻‍🏫 Prof Express : Soutien et cours en ligne GRATUIT du CP à la terminale pour vos enfants.</p><br>
         </div>
     `;
     document.getElementById('resultats-zone').style.display = 'block';
