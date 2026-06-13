@@ -41,7 +41,7 @@ function calculer() {
                 <p>Vous avez indiqué être parti <strong>${nbJours} jours</strong> pour <strong>${montantSaisi.toFixed(2)}€</strong> avec vos <strong>${nbEnfants} enfants</strong> en payant le séjour en chèques vacances, vous avez :</p>
                 <ul style="line-height: 1.8;">
                     <li><strong>${((taux / (1 + taux)) * 100).toFixed(0)}%</strong> de réduction sur les ${baseReduite.toFixed(2)}€.</li>
-                    <li><strong>${partHorsAbondement.toFixed(2)}€</strong> de reste à charge (la somme au dela des 1200€ que vous ne pouvez pas payer en chèques vacances).</li>
+                    <li><strong>${partHorsAbondement.toFixed(2)}€</strong> de reste à charge (la somme au dela des 1200€ sans chèques vacances).</li>
                     <li><strong>${aideVacances.toFixed(2)}€</strong> d'aide vacances virée sur votre compte dès votre retour.</li>
                     <li><strong>${aideEnfantsTotale.toFixed(2)}€</strong> d'aide séjour enfants accompagnés grâce à vos ${nbEnfants} enfants (aide versée via complément sur le bulletin de salaire).</li>
                 </ul>
@@ -66,16 +66,16 @@ function calculer() {
 				➔ Vous épargnez 100€ = Vous disposez de <strong>${(100 * (1 + taux)).toFixed(0)}€ </strong><br>
 				(merci La Poste).<br>
                 • Budget 30€ (Restaurant) : Vous ne payez plus <strong>QUE</strong> ${(30 * (1 - (taux / (1 + taux)))).toFixed(2)}€.<br>
-                ${montantSaisi > 0 ? `• Budget Location indiqué (${montantSaisi}€) :<br>- Base abondée (jusqu'à 1200€) : Vous économisez <strong>${economie.toFixed(2)}€ sur le séjour initialement à (${montantSaisi}€)</strong>.<br>
+                ${montantSaisi > 0 ? `• Votre budget Location indiqué : ${montantSaisi}€ :<br>- Base abondée (jusqu'à 1200€) : Vous économisez <strong>${economie.toFixed(2)}€ sur le séjour de (${montantSaisi}€)</strong>.<br>
 				(NB : au-delà de 1200€ : pas d' abondement)<br>
 				➔ <strong>Coût net après abondement : ${coutApresReduction.toFixed(2)}€</strong>.` : `• Budget Location : <em>Indiquez un montant pour voir votre réduction.</em>`}<br>
                 Réduction réelle : - <strong>${((taux / (1 + taux)) * 100).toFixed(2)}%</strong> 
-                <br> et cela est valable sur <strong>TOUS</strong> vos achats loisirs (ciné, parcs...), vacances (avions, campings...), la restauration (Mcdo, Buffalo,...) mais <strong>EGALEMENT LE PEAGE</strong> <BR>
+                <br> valable sur <strong>TOUS</strong> vos achats loisirs (ciné, parcs...), vacances (avions, campings...), restauration (Mcdo, Buffalo,...) mais <strong>AUSSI LE PEAGE</strong> <BR>
 				(offre télépéage avec chargement par chèques vacances)
             </p>
             <hr style="border: 0; border-top: 1px solid #cce5ff; margin: 15px 0;">
             <div style="font-weight: bold; margin-bottom: 5px;">💸 Aide aux vacances (Vacances Timbrés)</div>
-            <p>• Aide versée : <strong>${aideVacances}€</strong> <br>(c'est un virement effectué 1fois/an/postier après présentation de la facture).</p>
+            <p>• Aide versée : <strong>${aideVacances}€</strong> <br>(virement effectué 1 fois/an/postier après présentation de la facture).</p>
             <hr style="border: 0; border-top: 1px solid #cce5ff; margin: 15px 0;">
             <div style="font-weight: bold; margin-bottom: 5px;">💸 Séjour enfant accompagné</div>
             <p><em>(Limite de 45 nuits par an et par enfant)</em><br>${texteEnfant}</p>
